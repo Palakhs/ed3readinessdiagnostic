@@ -1,0 +1,10 @@
+{
+  "name": "ed3-diagnostic",
+  "version": "1.0.0",
+  "description": "ED3 Delivery Readiness Diagnostic for IFS Copperleaf",
+  "private": true,
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'No build required'"
+  }
+}
