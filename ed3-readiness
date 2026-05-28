@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ED3 Delivery Readiness Assessment | IFS Copperleaf</title>
+    <link href="https://fonts.googleapis.com/css2?family=Euclid+Circular+A:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Euclid+Circular+A:wght@300;400;500;600&display=swap');
+
+        :root {
+            /* Tier 1 */
+            --ifs-midnight: #170430;
+            --ifs-dark-purple: #360065;
+
+            /* Tier 2 */
+            --ifs-lilac: #CD92FF;
+            --ifs-purple: #8427E2;
+            --ifs-blue: #72C9F8;
+
+            /* Tier 3 */
+            --ifs-green: #33FF94;
+            --ifs-fuchsia: #E00072;
+
+            /* Special accents */
+            --ifs-orange: #EF5829;
+            --ifs-yellow: #FFCD5A;
+
+            /* Neutrals */
+            --ifs-dark-grey: #232323;
+            --ifs-grey-2: #919BA5;
+            --ifs-grey-3: #C8D2D7;
+            --ifs-grey-4: #E1EBEB;
+            --ifs-white: #FFFFFF;
+
+            /* Typography */
+            --ifs-font: 'Euclid Circular A', 'Century Gothic', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            font-family: var(--ifs-font);
+            background: 
+                radial-gradient(ellipse at 80% 20%, rgba(132, 39, 226, 0.3) 0%, transparent 40%),
+                radial-gradient(ellipse at 20% 80%, rgba(54, 0, 101, 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, #170430 0%, #0a0015 100%);
+            color: var(--ifs-dark-grey);
+            min-height: 100vh;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 48px 32px;
+        }
+
+        /* ========== HEADER/NAV ========== */
+        .header-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 80px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(205, 146, 255, 0.2);
+        }
+
+        .logo {
+            font-size: 0.95em;
+            font-weight: 600;
+            color: var(--ifs-white);
+            letter-spacing: -0.025em;
+            text-transform: uppercase;
+            tracking: 1px;
+        }
+
+        .logo-img {
+            height: 32px;
+            width: auto;
+            display: block;
+        }
+
+        .logo span {
+            color: var(--ifs-lilac);
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            text-align: center;
+            margin-bottom: 100px;
+            padding: 80px 60px;
+        }
+
+        .hero-tag {
+            font-size: 0.95em;
+            color: var(--ifs-blue);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.045em;
+            margin-bottom: 32px;
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: 3.8em;
+            color: var(--ifs-white);
+            margin-bottom: 32px;
+            font-weight: 600;
+            line-height: 1.1;
+            letter-spacing: -0.025em;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3em;
+            color: var(--ifs-lilac);
+            margin-bottom: 32px;
+            line-height: 1.5;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+        }
+
+        .hero-description {
+            font-size: 1.05em;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 48px;
+            line-height: 1.8;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 14px 36px;
+            background: var(--ifs-blue);
+            color: var(--ifs-midnight);
+            border: none;
+            border-radius: 999px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.045em;
+            transition: all 0.3s ease;
+            font-family: var(--ifs-font);
+            box-shadow: 0 8px 24px rgba(114, 201, 248, 0.2);
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 36px rgba(114, 201, 248, 0.3);
+        }
+
+        /* ========== VALUE PROPS ========== */
+        .value-props {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-bottom: 60px;
+        }
+
+        .prop-card {
+            background: var(--ifs-dark-purple);
+            padding: 40px 32px;
+            border-radius: 12px;
+            color: var(--ifs-white);
+            border: 1px solid rgba(205, 146, 255, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .prop-card:hover {
+            border-color: rgba(205, 146, 255, 0.3);
+            background: rgba(54, 0, 101, 0.8);
+        }
+
+        .prop-number {
+            font-size: 2.2em;
+            font-weight: 600;
+            color: var(--ifs-blue);
+            margin-bottom: 16px;
+            letter-spacing: -0.025em;
+        }
+
+        .prop-title {
+            font-size: 1.15em;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--ifs-lilac);
+            letter-spacing: -0.01em;
+        }
+
+        .prop-text {
+            font-size: 0.95em;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 400;
+            letter-spacing: -0.01em;
+        }
+
+        /* ========== DIAGNOSTIC SECTION ========== */
+
+        .diagnostic-section {
+            display: none;
+        }
+
+        .diagnostic-section.active {
+            display: block;
+        }
+
+        .diagnostic-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .diagnostic-header h2 {
+            font-size: 2.2em;
+            color: var(--ifs-white);
+            margin-bottom: 12px;
+            font-weight: 600;
+            letter-spacing: -0.025em;
+        }
+
+        .progress-container {
+            margin-bottom: 48px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(205, 146, 255, 0.1);
+        }
+
+        .progress-text {
+            font-size: 0.9em;
+            color: var(--ifs-grey-2);
+            margin-bottom: 12px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.045em;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #72C9F8, #8427E2);
+            transition: width 0.3s ease;
+        }
+
+        .progress-percent {
+            font-size: 0.85em;
+            color: var(--ifs-grey-2);
+            text-align: right;
+        }
+
+        .question-container {
+            background: var(--ifs-white);
+            border-radius: 12px;
+            padding: 48px;
+            margin-bottom: 32px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .question-number {
+            font-size: 0.85em;
+            color: var(--ifs-blue);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.045em;
+            margin-bottom: 8px;
+        }
+
+        .question-dimension {
+            font-size: 0.8em;
+            color: var(--ifs-grey-2);
+            text-transform: uppercase;
+            letter-spacing: 0.045em;
+            margin-bottom: 16px;
+        }
+
+        .question-text {
+            font-size: 1.4em;
+            color: var(--ifs-midnight);
+            margin-bottom: 32px;
+            font-weight: 600;
+            line-height: 1.4;
+            letter-spacing: -0.025em;
+        }
+
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 16px 20px;
+            background: var(--ifs-white);
+            border: 2px solid var(--ifs-grey-4);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .option:hover {
+            border-color: var(--ifs-blue);
+            background: rgba(114, 201, 248, 0.03);
+        }
+
+        .option input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 16px;
+            cursor: pointer;
+            accent-color: var(--ifs-purple);
+        }
+
+        .option-label {
+            flex: 1;
+            color: var(--ifs-dark-grey);
+            font-size: 1em;
+            font-weight: 500;
+        }
+
+        .option-score {
+            font-size: 0.8em;
+            color: var(--ifs-grey-2);
+            background: var(--ifs-grey-4);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 16px;
+            justify-content: space-between;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 12px 32px;
+            border: none;
+            border-radius: 999px;
+            font-size: 0.95em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.045em;
+            font-family: var(--ifs-font);
+        }
+
+        .btn-primary {
+            background: var(--ifs-blue);
+            color: var(--ifs-midnight);
+            flex: 1;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(114, 201, 248, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--ifs-white);
+            color: var(--ifs-midnight);
+            border: 2px solid var(--ifs-blue);
+            flex: 0 1 auto;
+        }
+
+        .btn-secondary:hover {
+            background: var(--ifs-grey-4);
+        }
+
+        /* ========== RESULTS SECTION ========== */
+        .results-container {
+            display: none;
+        }
+
+        .results-container.active {
+            display: block;
+        }
+
+        .results-header {
+            background: 
+                radial-gradient(ellipse at 50% 50%, rgba(114, 201, 248, 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 30%, rgba(132, 39, 226, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(54, 0, 101, 0.25) 0%, transparent 55%),
+                #170430;
+            padding: 60px 48px;
+            border-radius: 12px;
+            margin-bottom: 48px;
+            text-align: center;
+            color: var(--ifs-white);
+        }
+
+        .stage-badge {
+            display: inline-block;
+            background: var(--ifs-blue);
+            color: var(--ifs-midnight);
+            padding: 8px 20px;
+            border-radius: 999px;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.045em;
+            margin-bottom: 24px;
+        }
+
+        .overall-score {
+            font-size: 4em;
+            font-weight: 600;
+            color: var(--ifs-blue);
+            margin-bottom: 12px;
+            letter-spacing: -0.025em;
+        }
+
+        .score-label {
+            font-size: 1em;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.045em;
+        }
+
+        .meaning-text {
+            font-size: 1.15em;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .strengths-focus {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin: 36px 0;
+        }
+
+        .strength-box, .focus-box {
+            padding: 28px;
+            border-radius: 12px;
+        }
+
+        .strength-box {
+            background: rgba(114, 201, 248, 0.08);
+            border-left: 4px solid var(--ifs-blue);
+        }
+
+        .focus-box {
+            background: rgba(239, 88, 41, 0.08);
+            border-left: 4px solid var(--ifs-orange);
+        }
+
+        .strength-box h4, .focus-box h4 {
+            font-size: 1.05em;
+            font-weight: 600;
+            margin-bottom: 18px;
+            color: var(--ifs-midnight);
+            letter-spacing: -0.025em;
+        }
+
+        .strength-box ul, .focus-box ul {
+            list-style: none;
+            font-size: 0.95em;
+            color: var(--ifs-dark-grey);
+            line-height: 2;
+        }
+
+        .strength-box li:before {
+            content: "✓ ";
+            color: var(--ifs-blue);
+            font-weight: 600;
+            margin-right: 10px;
+        }
+
+        .focus-box li:before {
+            content: "→ ";
+            color: var(--ifs-orange);
+            font-weight: 600;
+            margin-right: 10px;
+        }
+
+        .dimensions-section {
+            margin: 48px 0;
+        }
+
+        .dimensions-title {
+            font-size: 1.3em;
+            color: var(--ifs-midnight);
+            margin-bottom: 24px;
+            font-weight: 600;
+            letter-spacing: -0.025em;
+        }
+
+        .dimension-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .dimension-card {
+            background: var(--ifs-grey-4);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--ifs-blue);
+        }
+
+        .dimension-name {
+            font-size: 0.95em;
+            font-weight: 600;
+            color: var(--ifs-midnight);
+            margin-bottom: 12px;
+        }
+
+        .dimension-score-bar {
+            height: 8px;
+            background: var(--ifs-grey-3);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+
+        .dimension-score-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #72C9F8, #8427E2);
+            transition: width 0.3s ease;
+        }
+
+        .dimension-score-text {
+            font-size: 0.85em;
+            color: var(--ifs-grey-2);
+        }
+
+        .email-section {
+            background: var(--ifs-dark-purple);
+            padding: 40px 32px;
+            border-radius: 12px;
+            margin-top: 48px;
+        }
+
+        .email-section h3 {
+            color: var(--ifs-white);
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        .email-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            color: var(--ifs-lilac);
+            font-size: 0.85em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.045em;
+            margin-bottom: 8px;
+        }
+
+        .form-group input {
+            padding: 12px 16px;
+            border: 2px solid rgba(205, 146, 255, 0.3);
+            border-radius: 8px;
+            font-family: var(--ifs-font);
+            font-size: 1em;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--ifs-white);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--ifs-blue);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 20px rgba(114, 201, 248, 0.2);
+        }
+
+        .email-buttons {
+            display: flex;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .btn-email {
+            flex: 1;
+            padding: 12px 24px;
+            background: var(--ifs-blue);
+            color: var(--ifs-midnight);
+            border: none;
+            border-radius: 999px;
+            font-weight: 600;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.045em;
+            transition: all 0.3s ease;
+            font-family: var(--ifs-font);
+            font-size: 0.9em;
+        }
+
+        .btn-email:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(114, 201, 248, 0.3);
+        }
+
+        .btn-email:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .btn-restart {
+            flex: 1;
+            padding: 12px 24px;
+            background: var(--ifs-white);
+            color: var(--ifs-midnight);
+            border: none;
+            border-radius: 999px;
+            font-weight: 600;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.045em;
+            transition: all 0.3s ease;
+            font-family: var(--ifs-font);
+            font-size: 0.9em;
+        }
+
+        .btn-restart:hover {
+            background: var(--ifs-grey-4);
+            transform: translateY(-2px);
+        }
+
+        .email-status {
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-top: 12px;
+            font-weight: 500;
+            font-size: 0.9em;
+        }
+
+        .email-status.success {
+            background: rgba(51, 255, 148, 0.15);
+            color: #33FF94;
+            border: 1px solid rgba(51, 255, 148, 0.3);
+        }
+
+        .email-status.error {
+            background: rgba(239, 88, 41, 0.15);
+            color: #EF5829;
+            border: 1px solid rgba(239, 88, 41, 0.3);
+        }
+
+        .loading {
+            display: inline-block;
+            width: 4px;
+            height: 4px;
+            background: currentColor;
+            border-radius: 50%;
+            margin-left: 4px;
+            animation: blink 1.4s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 24px 16px;
+            }
+
+            .hero {
+                padding: 40px 20px;
+                margin-bottom: 60px;
+            }
+
+            .hero h1 {
+                font-size: 2.2em;
+            }
+
+            .hero-description {
+                font-size: 1em;
+            }
+
+            .question-container {
+                padding: 24px 16px;
+            }
+
+            .question-text {
+                font-size: 1.1em;
+            }
+
+            .strengths-focus {
+                grid-template-columns: 1fr;
+            }
+
+            .dimension-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .results-header {
+                padding: 40px 24px;
+            }
+
+            .overall-score {
+                font-size: 2.8em;
+            }
+
+            .email-buttons {
+                flex-direction: column;
+            }
+
+            .btn-email, .btn-restart {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header-nav">
+            <div class="logo">
+                <img src="ifs-copperleaf-logo.png" alt="IFS Copperleaf" class="logo-img">
+            </div>
+        </div>
+
+        <!-- LANDING PAGE -->
+        <div id="landing-page">
+            <div class="hero">
+                <span class="hero-tag">Regulatory Readiness</span>
+                <h1>How Ready Are You for ED3?</h1>
+                <p class="hero-subtitle">Assess your organization's delivery capability for Ofgem's regulatory requirements</p>
+                <p class="hero-description">
+                    This diagnostic evaluates 12 critical dimensions of ED3 readiness, giving you a clear picture of your maturity level and key areas for improvement.
+                </p>
+                <button class="hero-cta" onclick="startDiagnostic()">Start Assessment</button>
+            </div>
+
+            <div class="value-props">
+                <div class="prop-card">
+                    <div class="prop-number">01</div>
+                    <div class="prop-title">Comprehensive Assessment</div>
+                    <div class="prop-text">12 questions covering all critical ED3 delivery dimensions</div>
+                </div>
+                <div class="prop-card">
+                    <div class="prop-number">02</div>
+                    <div class="prop-title">Actionable Insights</div>
+                    <div class="prop-text">Clear identification of strengths and improvement opportunities</div>
+                </div>
+                <div class="prop-card">
+                    <div class="prop-number">03</div>
+                    <div class="prop-title">Maturity Scoring</div>
+                    <div class="prop-text">Understand your stage of regulatory and delivery readiness</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DIAGNOSTIC QUESTIONS -->
+        <div id="diagnostic-section" class="diagnostic-section">
+            <div class="diagnostic-header">
+                <h2>ED3 Readiness Assessment</h2>
+            </div>
+            <div class="progress-container">
+                <div class="progress-text" id="progress-text">Question 1 of 12</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="progress-percent" id="progress-percent">0%</div>
+            </div>
+            <div id="questions-container"></div>
+        </div>
+
+        <!-- RESULTS PAGE -->
+        <div id="results-container" class="results-container">
+            <div class="results-header">
+                <div class="stage-badge" id="stage-badge">Stage 1: Plan Exploration</div>
+                <div class="overall-score" id="overall-score">0.0</div>
+                <div class="score-label">Overall Maturity Score (out of 4.0)</div>
+                <div class="meaning-text" id="meaning-text"></div>
+            </div>
+
+            <div class="strengths-focus">
+                <div class="strength-box">
+                    <h4>Your Strengths</h4>
+                    <ul id="strengths-list"></ul>
+                </div>
+                <div class="focus-box">
+                    <h4>Critical Focus Areas</h4>
+                    <ul id="focus-list"></ul>
+                </div>
+            </div>
+
+            <div class="dimensions-section">
+                <h3 class="dimensions-title">Maturity by Dimension</h3>
+                <div class="dimension-cards" id="dimension-cards"></div>
+            </div>
+
+            <div class="email-section">
+                <h3>Get Your Results</h3>
+                <div class="email-form">
+                    <div class="form-group">
+                        <label for="respondent-name">Your Name</label>
+                        <input type="text" id="respondent-name" placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="respondent-email">Your Email</label>
+                        <input type="email" id="respondent-email" placeholder="Enter your email">
+                    </div>
+                    <div class="email-buttons">
+                        <button class="btn-email" id="send-email-btn" onclick="sendAssessmentEmail()">📧 Email My Results</button>
+                        <button class="btn-restart" onclick="restartDiagnostic()">← Retake Assessment</button>
+                    </div>
+                    <div id="email-status-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentQuestion = 0;
+        let scores = {};
+        let dimensionScores = {};
+        let assessmentData = {};
+
+        const questions = [
+            {
+                dimension: 'Plan Defensibility & Rate Case Readiness',
+                question: 'How well documented are your investment decisions with clear rationale that could withstand regulatory scrutiny?',
+                options: [
+                    { text: 'Decisions lack formal documentation or clear rationale', score: 1 },
+                    { text: 'Basic documentation exists but rationale is inconsistent', score: 2 },
+                    { text: 'Well-documented with clear rationale in most cases', score: 3 },
+                    { text: 'Comprehensive documentation with defensible rationale across all major decisions', score: 4 }
+                ]
+            },
+            {
+                dimension: 'Delivery Strategy Credibility',
+                question: 'Does your 10-year delivery strategy align with RIIO-ED3 requirements and stakeholder expectations?',
+                options: [
+                    { text: 'Strategy not formally developed or significantly misaligned', score: 1 },
+                    { text: 'Basic strategy exists but with significant gaps', score: 2 },
+                    { text: 'Strategy largely aligned with minor refinements needed', score: 3 },
+                    { text: 'Comprehensive, credible strategy fully aligned with ED3 requirements', score: 4 }
+                ]
+            },
+            {
+                dimension: 'Supply Chain Alignment',
+                question: 'How effectively aligned are your supply chain partners with ED3 delivery commitments?',
+                options: [
+                    { text: 'Limited alignment; suppliers not engaged on ED3 requirements', score: 1 },
+                    { text: 'Basic engagement; some misalignment on delivery timelines', score: 2 },
+                    { text: 'Good alignment with most suppliers on key commitments', score: 3 },
+                    { text: 'Excellent alignment with robust supplier management and contingency plans', score: 4 }
+                ]
+            },
+            {
+                dimension: 'Risk Management & Governance',
+                question: 'What is the maturity of your risk identification, assessment, and mitigation processes?',
+                options: [
+                    { text: 'Minimal risk management; ad hoc approach', score: 1 },
+                    { text: 'Basic risk register exists; inconsistent mitigation', score: 2 },
+                    { text: 'Formal risk processes with documented mitigation; regular review', score: 3 },
+                    { text: 'Comprehensive risk governance with proactive monitoring and escalation', score: 4 }
+                ]
+            },
+            {
+                dimension: 'Stakeholder Engagement',
+                question: 'How engaged are your key stakeholders in the ED3 delivery plan?',
+                options: [
+                    { text: 'Minimal stakeholder engagement; communication gaps', score: 1 },
+                    { text: 'Basic engagement; some communication but limited feedback integration', score: 2 },
+                    { text: 'Good engagement with regular communication and feedback loops', score: 3 },
+                    { text: 'Excellent stakeholder relationships with co-creation of delivery plans', score: 4 }
+                ]
+            },
+            {
+                dimension: 'Governance & Accountability',
+                question: 'How clear are roles, responsibilities, and accountability structures for ED3 delivery?',
+                options: [
+                    { text: 'Unclear roles; accountability not well defined', score: 1 },
+                    { text: 'Basic structure but with gaps in accountability', score: 2 },
+                    { text: 'Clear roles with defined accountability mechanisms', score: 3 },
+                    { text: 'Robust governance with clear escalation and accountability at all levels', score: 4 }
+                ]
+            },
+            {
+                dimension: 'Resource Capability',
+                question: 'Do you have sufficient skilled resources to execute your ED3 delivery plan?',
+                options: [
+                    { text: 'Significant resource gaps; capability concerns', score: 1 },
+                    { text: 'Some gaps; limited capability in key areas', score: 2 },
+                    { text: 'Adequate resources with minor capability gaps', score: 3 },
+                    { text: 'Excellent resource planning with all key capabilities in place or planned', score: 4 }
+                ]
+            },
+            {
+                dimension: 'Data & Visibility',
+                question: 'How good is your data quality and visibility into ED3 project progress?',
+                options: [
+                    { text: 'Poor data quality; limited visibility into progress', score: 1 },
+                    { text: 'Basic data collection but visibility is inconsistent', score: 2 },
+                    { text: 'Good data quality with regular progress monitoring', score: 3 },
+                    { text: 'Excellent data governance with real-time visibility and analytics', score: 4 }
+                ]
+            },
+            {
+                dimension: 'Planning Repeatability',
+                question: 'Can you repeat and refine your ED3 planning processes consistently?',
+                options: [
+                    { text: 'Planning is ad hoc; not repeatable', score: 1 },
+                    { text: 'Basic processes exist but with inconsistencies', score: 2 },
+                    { text: 'Defined processes that are largely repeatable', score: 3 },
+                    { text: 'Mature, proven processes that are continuously refined', score: 4 }
+                ]
+            },
+            {
+                dimension: 'Trade-Off Visibility',
+                question: 'How transparent are your ED3 investment trade-offs to stakeholders?',
+                options: [
+                    { text: 'Trade-offs not clearly communicated', score: 1 },
+                    { text: 'Basic communication but limited transparency', score: 2 },
+                    { text: 'Clear communication of trade-offs with stakeholder input', score: 3 },
+                    { text: 'Transparent, well-documented trade-offs with stakeholder consensus', score: 4 }
+                ]
+            },
+            {
+                dimension: 'Regulatory Maturity',
+                question: 'How well prepared are you for regulatory interactions and reporting?',
+                options: [
+                    { text: 'Minimal preparation; uncertain of requirements', score: 1 },
+                    { text: 'Basic understanding but gaps in preparation', score: 2 },
+                    { text: 'Well prepared with most requirements understood', score: 3 },
+                    { text: 'Fully prepared with clear processes and proactive regulatory engagement', score: 4 }
+                ]
+            },
+            {
+                dimension: 'Capital Efficiency & Optimization',
+                question: 'Are you optimizing capital deployment for maximum impact?',
+                options: [
+                    { text: 'Limited optimization; reactive capital deployment', score: 1 },
+                    { text: 'Basic optimization but significant inefficiencies remain', score: 2 },
+                    { text: 'Good optimization with balanced trade-offs', score: 3 },
+                    { text: 'Excellent optimization with data-driven capital allocation', score: 4 }
+                ]
+            }
+        ];
+
+        function startDiagnostic() {
+            document.getElementById('landing-page').style.display = 'none';
+            document.getElementById('diagnostic-section').classList.add('active');
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const container = document.getElementById('questions-container');
+            container.innerHTML = '';
+
+            questions.forEach((q, idx) => {
+                const qDiv = document.createElement('div');
+                if (idx === currentQuestion) {
+                    qDiv.className = 'question-container';
+                    qDiv.innerHTML = `
+                        <div class="question-number">Question ${idx + 1}</div>
+                        <div class="question-dimension">${q.dimension}</div>
+                        <div class="question-text">${q.question}</div>
+                        <div class="options-group">
+                            ${q.options.map((opt, optIdx) => `
+                                <label class="option">
+                                    <input type="radio" name="q${idx}" value="${optIdx}" onchange="recordAnswer(${idx}, ${optIdx})">
+                                    <span class="option-label">${opt.text}</span>
+                                    <span class="option-score">Score: ${opt.score}</span>
+                                </label>
+                            `).join('')}
+                        </div>
+                        <div class="button-group">
+                            ${currentQuestion > 0 ? `<button class="btn-secondary" onclick="prevQuestion()">← Previous</button>` : '<div></div>'}
+                            ${currentQuestion < questions.length - 1 ? `<button class="btn-primary" onclick="nextQuestion()">Next →</button>` : `<button class="btn-primary" onclick="finishDiagnostic()">View Results</button>`}
+                        </div>
+                    `;
+                    container.appendChild(qDiv);
+                }
+            });
+
+            updateProgress();
+        }
+
+        function recordAnswer(qIndex, optionIndex) {
+            const question = questions[qIndex];
+            const score = question.options[optionIndex].score;
+            scores[qIndex] = score;
+            if (!dimensionScores[question.dimension]) {
+                dimensionScores[question.dimension] = [];
+            }
+            dimensionScores[question.dimension].push(score);
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                renderQuestion();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                renderQuestion();
+            }
+        }
+
+        function updateProgress() {
+            const answered = Object.keys(scores).length;
+            const percent = Math.round((answered / questions.length) * 100);
+            document.getElementById('progress-text').textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
+            document.getElementById('progress-percent').textContent = `${percent}%`;
+            document.getElementById('progress-fill').style.width = `${percent}%`;
+        }
+
+        function finishDiagnostic() {
+            document.getElementById('diagnostic-section').classList.remove('active');
+            document.getElementById('results-container').classList.add('active');
+            renderResults();
+        }
+
+        function calculateOverallScore() {
+            const allScores = Object.values(scores);
+            return allScores.length > 0 ? (allScores.reduce((a, b) => a + b, 0) / allScores.length) : 0;
+        }
+
+        function getStage(score) {
+            if (score < 1.5) return { stage: 'Stage 1', label: 'Plan Exploration', meaning: 'Your organization is in early planning. Regulatory readiness and defensibility need significant development.' };
+            if (score < 2.5) return { stage: 'Stage 2', label: 'Delivery Planning', meaning: 'You\'re building planning capability. You have gaps in governance and defensibility that regulators will scrutinize.' };
+            if (score < 3.25) return { stage: 'Stage 3', label: 'Delivery Ready', meaning: 'You\'re ready to execute and defend. Your organization has the capability to justify ED3 decisions to regulators.' };
+            return { stage: 'Stage 4', label: 'Optimized & Defensive', meaning: 'You\'re mature across all dimensions. Your organization is setting the standard for defensible, optimized ED3 planning.' };
+        }
+
+        function renderResults() {
+            const overall = calculateOverallScore();
+            const stage = getStage(overall);
+
+            assessmentData = {
+                overallScore: overall,
+                stage: stage,
+                timestamp: new Date().toLocaleString(),
+                results: {}
+            };
+
+            document.getElementById('overall-score').textContent = overall.toFixed(1);
+            document.getElementById('stage-badge').textContent = `${stage.stage}: ${stage.label}`;
+            document.getElementById('meaning-text').textContent = stage.meaning;
+
+            // Find strengths and focus areas
+            const sortedDimensions = Object.entries(dimensionScores)
+                .map(([dim, scores]) => ({
+                    dim,
+                    avg: scores.length > 0 ? scores.reduce((a, b) => a + b, 0) / scores.length : 0
+                }))
+                .sort((a, b) => b.avg - a.avg);
+
+            const strengths = sortedDimensions.slice(0, 3);
+            const focusAreas = sortedDimensions.slice(-3);
+
+            assessmentData.strengths = strengths.map(s => `${s.dim} (${s.avg.toFixed(1)}/4)`);
+            assessmentData.focusAreas = focusAreas.map(s => `${s.dim} (${s.avg.toFixed(1)}/4)`);
+            assessmentData.allDimensions = sortedDimensions;
+
+            const strengthsList = document.getElementById('strengths-list');
+            strengthsList.innerHTML = strengths.map(s => `<li>${s.dim} (${s.avg.toFixed(1)}/4)</li>`).join('');
+
+            const focusList = document.getElementById('focus-list');
+            focusList.innerHTML = focusAreas.map(s => `<li>${s.dim} (${s.avg.toFixed(1)}/4)</li>`).join('');
+
+            // Render dimension cards
+            const dimensionCardsDiv = document.getElementById('dimension-cards');
+            dimensionCardsDiv.innerHTML = '';
+
+            sortedDimensions.forEach(({dim, avg}) => {
+                const percent = (avg / 4) * 100;
+                const card = document.createElement('div');
+                card.className = 'dimension-card';
+                card.innerHTML = `
+                    <div class="dimension-name">${dim}</div>
+                    <div class="dimension-score-bar">
+                        <div class="dimension-score-fill" style="width: ${percent}%"></div>
+                    </div>
+                    <div class="dimension-score-text">Maturity: ${avg.toFixed(1)}/4</div>
+                `;
+                dimensionCardsDiv.appendChild(card);
+            });
+        }
+
+        function restartDiagnostic() {
+            currentQuestion = 0;
+            scores = {};
+            dimensionScores = {};
+            assessmentData = {};
+            document.getElementById('respondent-name').value = '';
+            document.getElementById('respondent-email').value = '';
+            document.getElementById('email-status-container').innerHTML = '';
+            questions.forEach(q => {
+                if (!dimensionScores[q.dimension]) {
+                    dimensionScores[q.dimension] = [];
+                }
+            });
+            document.getElementById('results-container').classList.remove('active');
+            document.getElementById('diagnostic-section').classList.add('active');
+            renderQuestion();
+        }
+
+        async function sendAssessmentEmail() {
+            const nameInput = document.getElementById('respondent-name');
+            const emailInput = document.getElementById('respondent-email');
+            const statusDiv = document.getElementById('email-status-container');
+            const btn = document.getElementById('send-email-btn');
+
+            // Validation
+            if (!nameInput.value.trim()) {
+                statusDiv.innerHTML = '<div class="email-status error">✗ Please enter your name</div>';
+                nameInput.focus();
+                return;
+            }
+
+            if (!emailInput.value.trim() || !emailInput.value.includes('@')) {
+                statusDiv.innerHTML = '<div class="email-status error">✗ Please enter a valid email</div>';
+                emailInput.focus();
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerHTML = 'Sending<span class="loading"></span>';
+            statusDiv.innerHTML = '';
+
+            try {
+                assessmentData.respondent = {
+                    name: nameInput.value,
+                    email: emailInput.value
+                };
+
+                const response = await fetch('/api/send-assessment-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        respondentEmail: emailInput.value,
+                        respondentName: nameInput.value,
+                        salesRepEmail: 'palakh.sharma@ifs.com',
+                        assessmentData: assessmentData
+                    })
+                });
+
+                if (response.ok) {
+                    statusDiv.innerHTML = `
+                        <div class="email-status success">
+                            ✓ Results sent to ${emailInput.value} and palakh.sharma@ifs.com
+                        </div>
+                    `;
+                    btn.disabled = false;
+                    btn.innerHTML = '✓ Email Sent';
+                } else {
+                    throw new Error('Failed to send email');
+                }
+            } catch (error) {
+                statusDiv.innerHTML = `
+                    <div class="email-status error">
+                        ✗ Error sending email. Please try again or download PDF.
+                    </div>
+                `;
+                btn.disabled = false;
+                btn.innerHTML = '📧 Email My Results';
+                console.error('Email error:', error);
+            }
+        }
+
+        function downloadPDF() {
+            const element = document.getElementById('results-container');
+            const opt = {
+                margin: 10,
+                filename: `ED3-Assessment-${new Date().toISOString().split('T')[0]}.pdf`,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' }
+            };
+
+            html2pdf().set(opt).from(element).save();
+        }
+    </script>
+</body>
+</html>
